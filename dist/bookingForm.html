@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/a08852d450.js" crossorigin="anonymous"></script>
+
+    <!--Js-->
+    <script src="Javascript/book-now.js" type="module" defer></script>
+</head>
+
+<body>
+    <main>
+        <!--BOOK NOW FORM STARTS-->
+        <div class="booking-form" id="book-now-form">
+            <div class="form-header">
+                <h2>
+                    registration
+                </h2>
+            </div>
+            <form action="" class="book-now-form">
+                <div class="fields-container">
+                    <div class="input-section name-section required">
+                        <label for="name">Name</label>
+                        <input type="text" title="studentName" name="studentName" id="studentName">
+                    </div>
+
+                    <div class="input-section course-section required">
+                        <label for="course">Course</label>
+                        <input type="text" title="studentCourse" name="studentCourse" id="studentCourse">
+                    </div>
+
+                    <div class="input-section ID-section required">
+                        <label for="student ID">Student ID</label>
+                        <input type="text" title="studentId" name="studentId" id="studentId">
+                    </div>
+
+                    <div class="input-section phone-section required">
+                        <label for="phone">Phone</label>
+                        <input type="tel"  title="studentTel" name="studentTel" id="studentTel">
+                    </div>
+
+                    <div class="input-section email-section required">
+                        <label for="email">Email</label>
+                        <input type="email" title="studentEmail" name="studentEmail" id="studentEmail">
+                    </div>
+
+                    <div class="input-section pwd-section required">
+                        <label for="password">Password</label>
+                        <input type="password" title="studentPassword" name="studentPassword" id="studentPassword">
+                    </div>
+
+                    <div class="input-section selection hostel-section required">
+                        <select title="hostelLlocation" name="hostelLlocation" id="hostelLocation">
+                            <option value="none" class="default" selected>
+                                Select Hostel
+                            </option>
+
+                            <option value="Bomso">
+                                Bomso
+                            </option>
+
+                            <option value="Ayeduase">
+                                Ayeduase
+                            </option>
+
+                            <option value="Gaza">
+                                Gaza
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="input-section no-border pic-section">
+                        <label for="pic" id="std-pic" class="static-label">Upload a profile pic</label>
+                        <input type="file" title="studentPic" name="studentPic" id="studentPic" accept="image/*">
+                    </div>
+
+                    <div class="input-section no-border">
+                        <button type="submit">
+                            <span class="goto-room">
+                                go to room allocation
+                            </span>
+                            <span class="loader">
+                                Please Wait&nbsp;
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--BOOK NOW FORM ENDS-->
+    </main>
+</body>
+
+</html>

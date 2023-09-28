@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Allocation</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/a08852d450.js" crossorigin="anonymous"></script>
+
+    <!--Js-->
+    <script type="module" src="Javascript/bundle.js" defer></script>
+    <script type="module" src="Javascript/firebase.js" defer></script>
+    <!-- <script type="module" src="Javascript/roomAllocation.js" defer></script> -->
+</head>
+<body>
+    <main>
+        <header class="main-header room-allocation-header">
+            <div class="header-content">
+                <div class="filter-icon">
+                    <h2>
+                        filter:
+                    </h2>
+                </div>
+                <div class="filters">
+                    <select name="hostelLocation" id="hostelLocation">
+                        <option value="Bomso" selected>
+                            Bomso
+                        </option>
+
+                        <option value="Ayeduase">
+                            Ayeduase
+                        </option>
+
+                        <option value="Gaza">
+                            Gaza
+                        </option>
+                    </select>
+
+                    <select name="room-type" id="room-type">
+                        <option value="all" selected>
+                            All Rooms
+                        </option>
+
+                        <option value="1">
+                            1-in-a-room
+                        </option>
+
+                        <option value="2">
+                            2-in-a-room
+                        </option>
+
+                        <option value="3">
+                            3-in-a-room
+                        </option>
+                    </select>
+
+                    <label for="occupants">Occupants:</label>
+                    <select name="occupants" id="occupants">
+                        <option value="none" selected>
+                            
+                        </option>
+
+                        <option value="0">
+                            0 
+                        </option>
+
+                        <option value="1">
+                            1 
+                        </option>
+
+                        <option value="2">
+                            2
+                        </option>
+
+                        <option value="3">
+                            3
+                        </option>
+                    </select>
+
+                    <button class="submit-filter">
+                        Go
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section class="rooms-table">
+            
+            <div class="section-header available-rooms-h2">
+                <h2 class="section-title">
+                    available rooms
+                </h2>
+            </div>
+
+            <table class="rooms-info">
+               <!--  <caption>
+                    Available Rooms
+                </caption> -->
+
+                <thead>
+                    <tr>
+                        <th>
+                            Location
+                        </th>
+                        <th>
+                            room number
+                        </th>
+                        <th>
+                            capacity
+                        </th>
+                        <th>
+                            occupants
+                        </th>
+                        <th>
+                            price
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            1
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Gaza
+                        </td>
+                        <td class="room-number">
+                            12
+                        </td>
+                        <td class="room-type">
+                            1
+                        </td>
+                        <td class="occupants">
+                            0
+                        </td>
+                        <td class="price">
+                            $1,000
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            bomso
+                        </td>
+                        <td class="room-number">
+                            23
+                        </td>
+                        <td class="room-type">
+                            3
+                        </td>
+                        <td class="occupants">
+                            2
+                        </td>
+                        <td class="price">
+                            $3,500
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="location">
+                            Ayeduase
+                        </td>
+                        <td class="room-number">
+                            45
+                        </td>
+                        <td class="room-type">
+                            2
+                        </td>
+                        <td class="occupants">
+                            1
+                        </td>
+                        <td class="price">
+                            $5,000
+                        </td>
+                    </tr>
+
+                    
+
+                </tbody>
+                
+            </table>
+        </section>
+
+        <div class="confirmation hide-confirmation">
+            <div class="close-confirmation"></div>
+
+            <div class="confirmation-content">
+                <h2 class="location">
+                    hostel location:&nbsp;&nbsp;
+                </h2>
+                <h2 class="room-number">
+                    room number:&nbsp;&nbsp;
+                </h2>
+                <h2 class="room-type">
+                    room capacity:&nbsp;&nbsp;
+                </h2>
+                <h2 class="occupants">
+                    current occupants:&nbsp;&nbsp;
+                </h2>
+                <h2 class="price">
+                    price:&nbsp;&nbsp;
+                </h2>
+
+                <button class="confirm-btn">
+                    confirm
+                </button>
+            </div>
+        </div>
+
+        <div class="screen-loader">
+            <h3>
+                Fetching Rooms. Please Wait&nbsp;&nbsp;
+            </h3>
+            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+        </div>
+    </main>
+</body>
+</html>
